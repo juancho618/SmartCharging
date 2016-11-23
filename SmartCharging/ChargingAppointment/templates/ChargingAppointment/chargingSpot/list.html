@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-<body>
+{% extends "layout.html" %}
+
+{% block content %}
+<div>
      {% for chargingSpot in chargingSpots %}
         <h2>{{chargingSpot.name}}</h2>
     {% endfor %}
-</head>
-</body>
-</html>
+</div>
+{% endblock %}
