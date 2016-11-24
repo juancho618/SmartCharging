@@ -1,0 +1,12 @@
+@import "../helpers/_mixins.scss";
+@import "../helpers/_variables.scss";
+
+.text-sm {
+    font-size: 12px;
+}
+
+.cursor {
+    &--pointer {
+        cursor: pointer;
+    }
+}

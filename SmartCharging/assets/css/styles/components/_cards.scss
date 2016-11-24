@@ -1,0 +1,139 @@
+@import "../helpers/_variables.scss";
+@import "_shadows.scss";
+@import "../helpers/_mixins.scss";
+@import "_general.scss";
+
+.item-card {
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 400;
+    min-height: 200px;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    background: #fff;
+    border-radius: 2px;
+    box-sizing: border-box;
+    @include browserSupport(transition, box-shadow 0.3s ease-in-out);
+    //@extend .cursor--pointer;
+    &:hover {
+        @include browserSupport(transition, box-shadow 0.25s ease-in-out);
+        @extend .shadow--8dp;
+    }
+
+    &__title {
+        @include browserSupport(align-items, center);
+        color: #000;
+        display: block;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-justify-content: stretch;
+        -ms-flex-pack: stretch;
+        justify-content: stretch;
+        line-height: normal;
+        padding: 16px;
+        @include browserSupport(perspective-origin, 165px 56px);
+        @include browserSupport(transform-origin, 165px 56px);
+        box-sizing: border-box;
+    }
+
+    &__menu {
+        position: absolute;
+        right: 16px;
+        top: 16px;
+    }
+
+    &__title-text {
+        -webkit-align-self: flex-end;
+        -ms-flex-item-align: end;
+        align-self: flex-end;
+        color: inherit;
+        display: block;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        font-size: 24px;
+        font-weight: 300;
+        line-height: normal;
+        overflow: hidden;
+        margin: 0;
+        @include browserSupport(transform-origin, 149px 48px);
+        text-shadow: 0px 1px 3px #1f1f1f;
+    }
+
+    &__supporting-text {
+        color: rgba(0,0,0,.54);
+        font-size: 1.3rem;
+        line-height: 18px;
+        overflow: hidden;
+        padding: 16px;
+    }
+
+    &__actions {
+        font-size: 16px;
+        line-height: normal;
+        width: 100%;
+        background-color: transparent;
+        padding: 8px;
+        box-sizing: border-box;
+
+        &.item-card--border {
+            border-top: 1px solid rgba(0,0,0,.1);
+        }
+
+        &__date {
+            margin-top: 9px;
+        }
+    }
+}
+
+.item-button {
+    color: $color-black;
+    @include browserSupport(border-radius, 4px);
+    height: 36px;
+    min-width: 64px;
+    padding: 0 8px;
+    display: inline-block;
+    letter-spacing: 0;
+    overflow: hidden;
+    outline: none;
+    text-decoration: none;
+    line-height: 36px;
+    vertical-align: middle;
+    
+    font: {
+        family: $font-secondary;
+        size: 14px;
+        weight: $bold;
+    }
+
+    @extend .cursor--pointer;
+    @include browserSupport(transition, transform 0.3s ease-in-out);
+
+    &--colored {
+        color: $color-primary;
+    }
+
+    &:hover {
+        background-color: rgba(183, 183, 183, 0.2);
+        text-decoration: none;
+        @include browserSupport(transition, transform 0.3s ease-in-out);
+        @include browserSupport(transform, translateY(-2px));
+        //transform: translateY(-1px);
+    }
+}
+
+.card-wide {
+    &.item-card {
+        margin-bottom: 25px;
+    }
+
+    & > .item-card__title {
+        color: #fff;
+        height: 176px;
+    }
+}

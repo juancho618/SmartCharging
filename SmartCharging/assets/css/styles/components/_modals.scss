@@ -1,0 +1,25 @@
+@import "../helpers/_mixins.scss";
+
+.modal-header {
+    background: rgba(224, 224, 224, 0.58);
+    border-radius: 6px 6px 0 0;
+    padding: 11px;
+    border-bottom: 1px solid #d8d8d8;
+
+    & .close {
+        margin-top: 1px;
+    }
+
+    &:before {
+        @include fontAwesomeIcon('\f0d1');
+        font-size: 27px;
+        position: absolute;
+        margin: -6px;
+        @include opacity(0.3);
+    }
+}
+
+.modal-title {
+    margin: 2px 0px 0px 34px;
+    font-size: 15px;
+}

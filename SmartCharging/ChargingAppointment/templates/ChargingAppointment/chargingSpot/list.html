@@ -3,7 +3,38 @@
 {% block content %}
 <div>
      {% for chargingSpot in chargingSpots %}
-        <h2>{{chargingSpot.name}}</h2>
+        <div class="row">
+        <div class="col-md-4">
+            <div class="card-wide item-card shadow--3dp animated fadeInUp">
+                <div class="item-card__title" style="background: url(https://images.pexels.com/photos/80404/harbour-boat-sea-plane-80404.jpeg?w=940&h=650&auto=compress&cs=tinysrgb) center / cover">
+                    <h2 class="item-card__title-text cursor--pointer">
+                        {{chargingSpot.name}}
+                    </h2>
+                </div>
+
+                <div class="item-card__supporting-text text-justify">
+                    Des
+                </div>
+
+                <div class="item-card__actions item-card--border">
+                    <a href="#"  class="item-button item-button--colored text-uppercase">
+                        View
+                    </a>
+
+                    <span class="badge pull-right item-card__actions__date">
+                        <i class="pe-7s-date"></i> Posted {{chargingSpot.createdDate}}
+                    </span>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="item-card__menu">
+                    <button type="button" class="btn btn-white btn-sm"  title="Add User" data-toggle="tooltip">
+                        <i class="pe-7s-add-user"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}

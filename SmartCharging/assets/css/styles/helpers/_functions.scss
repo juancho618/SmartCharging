@@ -1,0 +1,4 @@
+//Obtener el Color más oscuro por porcentaje
+@function getDarkerColor($hex, $percentage) {
+  @return darken($hex, $percentage);
+}
