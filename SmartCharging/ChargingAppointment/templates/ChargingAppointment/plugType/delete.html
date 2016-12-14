@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Delete {{plugtype.name}}?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger"><i class="pe-7s-trash"></i> Delete</button>
+    <a class="btn btn-default" href="{% url 'listPlugType' %}"><i class="pe-7s-close"></i> cancel</a>
+</form>
+{% endblock %}

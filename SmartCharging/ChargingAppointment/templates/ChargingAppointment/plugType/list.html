@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+    <a id="newPlugTypeBtn" class="btn btn-success"><i class="pe-7s-plus"></i> Add</a>
+    <table class="table table-responsive table-striped">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for plug in plugtype %}
+            <tr>
+                <td>{{ plug }}</td>
+                <td>
+                    <a href="{% url 'updatePlugType' pk=plug.id %}" class="btn btn-sm btn-success" data-toggle="tooltip" data-placement="top" title="Edit"><i class="pe-7s-pen"></i></a>
+                    <a href="{% url 'detailPlugType' pk=plug.id %}" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Details"><i class="pe-7s-look"></i></a>
+                    <a href="{% url 'deletePlugType' pk=plug.id %}" class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="pe-7s-trash"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <!-- Modal To create plug Type -->
+    <div id="createPlugTypeModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Create new Plug Type</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post">
+                        <div class="container">
+                            <div class="row">
+                               {{form.as_p}}
+                               {% csrf_token %}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+{% endblock %}
+

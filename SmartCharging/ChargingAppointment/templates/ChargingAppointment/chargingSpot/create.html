@@ -2,9 +2,84 @@
 
 {% block content %}
     <div class="container">
+        <form action="" method="post">
         <div class="row">
            {{form.as_p}}
+            {% csrf_token %}
         </div>
-    </div>
 
+        <div class="form-group">
+            <input type="text" name="Address" id="Address" autocomplete="off" class="form-control" style = "width:516px"  />
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div id="map" style="height: 415px"></div> <br />
+                        <input type="hidden" name="latitude" value="">
+                        <input type="hidden" name="longitude" value="">
+                        <input type="hidden" name="country" value="">
+                        <input type="hidden" name="city" value="">
+                        <input type="hidden" name="area" value="">
+                        <input type="hidden" name="neighborhood" value="">
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
+        </form>
+    </div>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/dist/typeahead.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead-addresspicker/0.1.4/typeahead-addresspicker.min.js"></script>
+    <script>
+          var addressPicker = new AddressPicker({
+            center: new google.maps.LatLng(6.244203, -75.58121189999997),
+            map: { id: '#map' }
+          });
+
+                $('[name="Address"]').typeahead(null, {
+                    displayKey: 'description',
+                    source: addressPicker.ttAdapter()
+                });
+
+                $('[name="Address"]').bind('typeahead:selected', addressPicker.updateMap);
+
+                $(addressPicker).on('addresspicker:selected', function (event, result) {
+                    displayResults(result, $('#response'));
+                });
+
+                $(addressPicker).on('addresspicker:predictions', function (event, result) {
+                    if (result && result.length > 0)
+                        $('[name="Address"]').removeClass("empty")
+                    else
+                        $('[name="Address"]').addClass("empty")
+                });
+
+                $('[name="Address"]').bind('typeahead:cursorchanged', addressPicker.updateMap);
+
+                function displayResults(result, div) {
+                    console.log(result);
+                    $('[name="latitude"]').val(result.lat());
+                    $('[name="longitude"]').val(result.lng());
+
+                    result.addressTypes().forEach(function (type) {
+                        //html.push("  " + type + ": " + result.nameForType(type));
+                        console.log(type + " - " + result.nameForType(type));
+                        switch (type.toString()) {
+                            case "locality":
+                                $('[name="city"]').val(result.nameForType(type));
+                                break;
+                            case "country":
+                                $('[name="country"]').val(result.nameForType(type));
+                                break;
+                            case "administrative_area_level_1":
+                                $('[name="area"]').val(result.nameForType(type));
+                                break;
+                            case "neighborhood":
+                                $('[name="neighborhood"]').val(result.nameForType(type));
+                                break;
+                        }
+                    });
+                }
+    </script>
 {% endblock %}
