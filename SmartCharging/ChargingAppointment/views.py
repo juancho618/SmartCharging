@@ -54,6 +54,7 @@ class PlugTypeDetailView(DetailView):
     model = models.PlugType
     template_name = "ChargingAppointment/plugType/details.html"
 
+
 #------------Create-------------------
 class PlugTypeCreateView(CreateView):
     form_class = PlugTypeCreate
@@ -72,6 +73,7 @@ class PlugTypeListView(CreateView, ListView ):
     model = models.PlugType
     form_class = PlugTypeCreate
     template_name = "ChargingAppointment/plugType/list.html"
+
 
 
 #------------Delete-------------------

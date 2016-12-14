@@ -6,7 +6,7 @@ from django.views import generic            #Allow to use form view
 
 class LoginView(generic.FormView):
     form_class = AuthenticationForm
-    success_url = reverse_lazy("ChargingAppointment: chargingSpotsList")
+    success_url = reverse_lazy("listPlugType")
     template_name = "accounts/login.html"
 
     def get_form(self, form_class=None):

@@ -8,8 +8,8 @@ class PlugType(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return  reverse("detailPlugType", kwargs={"pk": self.pk})
+    def get_absolute_url(self):             #Return after the save or edit action!
+        return  reverse("listPlugType")
 
 
 # Create your models here.

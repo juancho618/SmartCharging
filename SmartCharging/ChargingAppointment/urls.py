@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 from . import views
 
 urlpatterns =[
-    url(r'^$', views.chargingSpotList, name= 'chargingSpotsList'),
+    url(r'^$', views.chargingSpotList, name='chargingSpotsList'),
     url(r'^chargingSpot/create', views.createChargingSpot, name='createChargingStation'),
     url(r'^plugType/create/$', views.PlugTypeCreateView.as_view(), name='createPlugType'),
     url(r'^plugType/(?P<pk>\d+)/$', views.PlugTypeDetailView.as_view(), name='detailPlugType'),

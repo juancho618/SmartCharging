@@ -24,9 +24,6 @@ class PlugTypeCreate(forms.ModelForm):
         fields = [
             'name'
         ]
-        widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-        }
         labels = {
             'name': "Plug type name"
         }
