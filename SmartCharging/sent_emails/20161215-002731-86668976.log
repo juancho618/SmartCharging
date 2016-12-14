@@ -1,0 +1,25 @@
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: jjsorianoe@gmail.com
+Date: Wed, 14 Dec 2016 23:27:31 -0000
+Message-ID: <20161214232731.15456.15228@Juancho-Desktop>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/accounts/reset/MQ/4hv-3a4b4e3f74bb464e14ce/
+
+Your username, in case you've forgotten: jsoriano
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------
