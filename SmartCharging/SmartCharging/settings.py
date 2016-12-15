@@ -136,3 +136,5 @@ LOGIN_REDIRECT_URL = "listPlugType"
 #simulate email for reset password
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = os.path.join(BASE_DIR,"sent_emails")
+
+AUTH_USER_MODEL = "accounts.User"  #What model to use as a model user!!

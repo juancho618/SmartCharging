@@ -1,13 +1,16 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User             #User Model from Django
+
+#from django.contrib.auth.models import User             #User Model from Django
 
 
 class UserCreateForm(UserCreationForm):
     class Meta:
-        fields = ("username", "email", "password1", "password2")
-        model = User
+        fields = ("username", "email", "isStationOwner", "password1", "password2")
+        model = get_user_model()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["username"].label ="Display name"
+        self.fields["isStationOwner"].label = "Are you an station owner?"
         self.fields["email"].label = "Email address"
