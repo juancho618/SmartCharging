@@ -11,4 +11,6 @@ urlpatterns =[
     url(r'^plugType/edit/(?P<pk>\d+)/$', views.PlugTypeUpdateView.as_view(), name='updatePlugType'),
     url(r'^plugType/$', views.PlugTypeListView.as_view(), name='listPlugType'),
     url(r'^plugType/delete/(?P<pk>\d+)/$', views.PlugTypeDeleteView.as_view(), name='deletePlugType'),
+    url(r'^appointment/create/$', views.CreateAppointmentView.as_view(), name='createAppointment'),
+
 ]

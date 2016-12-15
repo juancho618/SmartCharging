@@ -27,5 +27,20 @@ class PlugTypeCreate(forms.ModelForm):
         labels = {
             'name': "Plug type name"
         }
+
+class AppointmentCreate(forms.ModelForm):
+    class Meta:
+        model = models.Appointment
+        fields = [
+            'chargingStation',
+            'reservationDate',
+        ]
+        widgets = {
+            'reservationDate': forms.TextInput(attrs={'class': 'flatpickr'}),
+        }
+        labels = {
+            'chargingStation': "Charging station",
+        }
+
 '''class ChargingStation(forms.Form):
     name = forms.CharField()'''

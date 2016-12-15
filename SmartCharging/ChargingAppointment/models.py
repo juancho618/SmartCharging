@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from  django.core.urlresolvers import reverse
 
@@ -29,4 +30,15 @@ class ChargingSpot(models.Model):
     area = models.CharField(max_length=255, default=0)
     neighborhood = models.CharField(max_length=255, default=0)
 
+    def __str__(self):
+        return self.name
+
+class Appointment (models.Model):
+    creationDate = models.DateTimeField(auto_now_add=True)
+    chargingStation = models.ForeignKey(ChargingSpot)
+    reservationDate = models.DateTimeField(null=False)
+    userReservation = models.ForeignKey(settings.AUTH_USER_MODEL)
+
+    def get_absolute_url(self):
+        return reverse('listPlugType')
 
