@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 from  django.core.urlresolvers import reverse
 
 
@@ -41,4 +42,9 @@ class Appointment (models.Model):
 
     def get_absolute_url(self):
         return reverse('listPlugType')
+
+class ChargingStationRate(models.Model):
+    chargingStation = models.ForeignKey(ChargingSpot)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    rate = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
 

@@ -6,6 +6,7 @@ from . import views
 urlpatterns =[
     url(r'^$', views.chargingSpotList, name='chargingSpotsList'),
     url(r'^chargingSpot/create', views.createChargingSpot, name='createChargingStation'),
+    url(r'^chargingSpot/(?P<pk>\d+)/$', views.ChargingStationDetail.as_view(), name='detailsChargingStation'),
     url(r'^plugType/create/$', views.PlugTypeCreateView.as_view(), name='createPlugType'),
     url(r'^plugType/(?P<pk>\d+)/$', views.PlugTypeDetailView.as_view(), name='detailPlugType'),
     url(r'^plugType/edit/(?P<pk>\d+)/$', views.PlugTypeUpdateView.as_view(), name='updatePlugType'),

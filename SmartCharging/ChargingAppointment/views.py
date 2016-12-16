@@ -37,6 +37,10 @@ def createChargingSpot(request):
             #return HttpResponseRedirect(chargingStation.get_absolute_url())
     return render(request, 'ChargingAppointment/chargingSpot/create.html', {'form': form})
 
+class ChargingStationDetail(LoginRequiredMixin, DetailView):
+    model = models.ChargingSpot
+    template_name = "ChargingAppointment/chargingSpot/details.html"
+
 #@login_required
 def createPlugType(request):
     form = forms.PlugTypeCreate()

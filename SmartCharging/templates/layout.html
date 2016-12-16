@@ -11,8 +11,11 @@
     <link rel="stylesheet" href="{% static 'css/Pe-icon-7-stroke.css' %}">
     <link rel="stylesheet" href="{% static 'css/Animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jQuery.score.css' %}">
     <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
+
 </head>
 <body class="fadeIn animated">
     <div class="wrapper">
@@ -88,27 +91,35 @@
             </footer>
         </div>
     </div>
+{% block js %}
+     <script src="{% static 'scripts/jquery-3.1.1.min.js' %}"></script>
+     <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
+     <script src="{% static 'scripts/bootstrap-checkbox-radio-switch.js' %}"></script>
+     <script src="{% static 'scripts/bootstrap-notify.js' %}"></script>
+     <script src="{% static 'scripts/bootstrap-select.js' %}"></script>
 
- <script src="{% static 'scripts/jquery-3.1.1.min.js' %}"></script>
- <script src="{% static 'scripts/bootstrap.min.js' %}"></script>
- <script src="{% static 'scripts/bootstrap-checkbox-radio-switch.js' %}"></script>
- <script src="{% static 'scripts/bootstrap-notify.js' %}"></script>
- <script src="{% static 'scripts/bootstrap-select.js' %}"></script>
- <script src="{% static 'scripts/light-bootstrap-dashboard.js' %}"></script>
-    <script src="https://unpkg.com/flatpickr"></script>
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-        $(".flatpickr").flatpickr({});
-        flatpickr(".flatpickr", {
-            enableTime: true
-        });
-        /** PlugType List Modal move!!! **/
-           $('#newPlugTypeBtn').click(function () {
-               $('#createPlugTypeModal').appendTo("body").modal('show');
-           });
-        /** End Plugtype list js**/
-    </script>
+     <script src="{% static 'scripts/light-bootstrap-dashboard.js' %}"></script>
+
+
+     <script src="https://unpkg.com/flatpickr"></script>
+     <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            })
+            $(".flatpickr").flatpickr({});
+            flatpickr(".flatpickr", {
+                enableTime: true,
+                 minDate: 'today',
+                maxDate: new Date().fp_incr(2),
+            });
+            /** PlugType List Modal move!!! **/
+               $('#newPlugTypeBtn').click(function () {
+                   $('#createPlugTypeModal').appendTo("body").modal('show');
+               });
+            /** End Plugtype list js**/
+
+
+     </script>
+{% endblock %}
 </body>
 </html>
