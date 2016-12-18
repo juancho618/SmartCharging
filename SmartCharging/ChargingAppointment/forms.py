@@ -42,5 +42,16 @@ class AppointmentCreate(forms.ModelForm):
             'chargingStation': "Charging station",
         }
 
+class RateSation(forms.ModelForm):
+    class Meta:
+        model = models.ChargingStationRate
+        fields = [
+            'rate',
+            'comment'
+        ]
+        widgets = {
+            'rate': forms.NumberInput(attrs={'class': 'demo-default'}),
+        }
+
 '''class ChargingStation(forms.Form):
     name = forms.CharField()'''

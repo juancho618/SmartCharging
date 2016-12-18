@@ -1,12 +1,20 @@
 {% extends "layout.html" %}
 {% load static from staticfiles %}
 
+{% load bootstrap3 %}
+
 {% block content %}
     <h1>{{chargingspot.name}}</h1>
     <div class="animated fadeIn" id="map" style="height:250px"></div>
     <div class="demo-default"></div>
+    <button type="button" class="btn btn-success" id="rateBtn"><i class="fa fa-thumbs-o-up"></i> Rate</button>
+    <form action="" method="post">
+       {% bootstrap_form form %}
+       {% csrf_token %}
+        <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
+    </form>
 
-    </p>
+
 {% endblock %}
 
 {% block js %}
@@ -48,6 +56,11 @@
 
             });
             $('.demo-default').score('score', 3);
+
+           $('#rateBtn').click(function () {
+               $('#rateStationModal').appendTo("body").modal('show');
+           });
+
 
     </script>
 {% endblock %}

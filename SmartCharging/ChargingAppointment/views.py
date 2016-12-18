@@ -12,7 +12,7 @@ from . import forms
 
 
 from .models import ChargingSpot
-from .forms import PlugTypeCreate, AppointmentCreate
+from .forms import PlugTypeCreate, AppointmentCreate, RateSation
 # Create your views here.
 
 def chargingSpotList(request):
@@ -37,9 +37,19 @@ def createChargingSpot(request):
             #return HttpResponseRedirect(chargingStation.get_absolute_url())
     return render(request, 'ChargingAppointment/chargingSpot/create.html', {'form': form})
 
-class ChargingStationDetail(LoginRequiredMixin, DetailView):
+class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
+    form_class = RateSation
     model = models.ChargingSpot
     template_name = "ChargingAppointment/chargingSpot/details.html"
+
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.chargingStation = models.ChargingSpot.objects.get(pk=1)
+        return super(ChargingStationDetail, self).form_valid(form)
+
+
+
 
 #@login_required
 def createPlugType(request):

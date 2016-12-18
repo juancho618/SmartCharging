@@ -47,4 +47,5 @@ class ChargingStationRate(models.Model):
     chargingStation = models.ForeignKey(ChargingSpot)
     user = models.ForeignKey(settings.AUTH_USER_MODEL)
     rate = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
+    comment = models.CharField(max_length=255)
 
