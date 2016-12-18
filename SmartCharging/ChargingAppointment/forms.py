@@ -47,10 +47,12 @@ class RateSation(forms.ModelForm):
         model = models.ChargingStationRate
         fields = [
             'rate',
-            'comment'
         ]
         widgets = {
-            'rate': forms.NumberInput(attrs={'class': 'demo-default'}),
+            'rate': forms.NumberInput(attrs={'class': 'hidden'}),
+        }
+        labels = {
+            'rate' : ""
         }
 
 '''class ChargingStation(forms.Form):

@@ -6,13 +6,27 @@
 {% block content %}
     <h1>{{chargingspot.name}}</h1>
     <div class="animated fadeIn" id="map" style="height:250px"></div>
-    <div class="demo-default"></div>
-    <button type="button" class="btn btn-success" id="rateBtn"><i class="fa fa-thumbs-o-up"></i> Rate</button>
-    <form action="" method="post">
-       {% bootstrap_form form %}
-       {% csrf_token %}
-        <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
-    </form>
+    <div class="demo-default" id="mean"></div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget-area no-padding blank">
+                <div class="status-upload">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {% bootstrap_form form %}
+                        <textarea placeholder="Test your message..." name="commentTxt" id="id_comment"></textarea>
+                        <ul>
+                            <li>
+                                <div class="demo-default" id="rate"></div>
+                            </li>
+                        </ul>
+                        <button type="submit" class="btn btn-wd btn-success"><i class="fa fa-share"></i> Submit</button>
+                    </form>
+                </div><!-- Status Upload  -->
+            </div><!-- Widget Area -->
+        </div>
+    </div>
+
 
 
 {% endblock %}
@@ -22,7 +36,21 @@
     <script src="http://maps.google.com/maps/api/js"></script>
     <script src="{% static 'scripts/gmaps.js' %}"></script>
     <script src="{% static 'scripts/jQuery.score.js' %}"></script>
+    <script src="{% static 'scripts/sweetalert.min.js' %}"></script>
     <script>
+            $('document').ready(function () {
+                var meanRate ='{{ meanRate }}';
+                meanRate = Math.round(meanRate);
+
+                // Rating!
+                $('#mean').score({
+                    fontAwesome : true,
+                    readOnly    : true,
+                    color: '#446CB3',
+                    score: meanRate
+
+                });
+            });
             // Use for the Map!
             $(function () {
 
@@ -45,21 +73,44 @@
                     //}
                 });
 
-
             });
 
-            // Rating!
-            $('.demo-default').score({
-                fontAwesome : true,
-                readOnly    : true,
-
-
+            $('#rate').score({
+                fontAwesome: true,
+                color : '#F7CA18',
             });
-            $('.demo-default').score('score', 3);
 
-           $('#rateBtn').click(function () {
-               $('#rateStationModal').appendTo("body").modal('show');
-           });
+            $('#rate').click(function () {
+               $('#id_rate').val($(this).score('score'));
+            });
+
+            $('form').submit(function (e) {
+                var msjError=[]
+
+               if ($('#id_rate').val() == undefined || $('#id_rate').val() == '' || $('#id_rate').val() == null ) {
+                   msjError.push('Please rate the station')
+
+               }
+               if($('#id_comment').val() == undefined || $('#id_comment').val() == '' || $('#id_comment').val() == null ) {
+                    msjError.push('Please enter your comment')
+               }
+               if (msjError.length > 0) {
+                   e.preventDefault();
+                   var text = '<ul>'
+                   for (i=0; i < msjError.length; i++){
+                       text += '<li>' + msjError[i] + '</li>';
+                   }
+                   text += '</ul>';
+                   swal({
+                       title: 'Error!',
+                       type: 'error',
+                       text: text,
+                       html: true
+                   })
+               }
+            });
+
+
 
 
     </script>

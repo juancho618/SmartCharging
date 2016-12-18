@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required           #This is nee
 from django.views.generic import (DeleteView, ListView, CreateView,
                                   DetailView, UpdateView)
 from django.core.urlresolvers import reverse_lazy
+from django.db.models import Avg
 
 
 from . import models
@@ -46,9 +47,15 @@ class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
     def form_valid(self, form):
         form.instance.user = self.request.user
         form.instance.chargingStation = models.ChargingSpot.objects.get(pk=1)
+        form.instance.rate = self.request.POST.get('rate')
+        form.instance.comment = self.request.POST.get('commentTxt')
         return super(ChargingStationDetail, self).form_valid(form)
 
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        listRate = models.ChargingStationRate.objects.filter(chargingStation_id = self.kwargs['pk'])
+        context['meanRate'] = listRate.aggregate(Avg('rate'))['rate__avg']
+        return context
 
 
 #@login_required
