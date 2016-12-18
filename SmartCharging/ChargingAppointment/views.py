@@ -53,8 +53,9 @@ class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        listRate = models.ChargingStationRate.objects.filter(chargingStation_id = self.kwargs['pk'])
+        listRate = models.ChargingStationRate.objects.filter(chargingStation_id = self.kwargs['pk']).prefetch_related('user')
         context['meanRate'] = listRate.aggregate(Avg('rate'))['rate__avg']
+        context['listComments'] = listRate
         return context
 
 

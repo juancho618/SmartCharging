@@ -3,10 +3,48 @@
 
 {% load bootstrap3 %}
 
+
+
 {% block content %}
     <h1>{{chargingspot.name}}</h1>
     <div class="animated fadeIn" id="map" style="height:250px"></div>
     <div class="demo-default" id="mean"></div>
+    {% for comment in  listComments  %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class=""><br />
+                    <div class="comments-container">
+                        <ul id="comments-list" class="comments-list">
+                            <li ng-repeat="item in postList">
+                                <div class="comment-main-level">
+                                    <!-- Avatar -->
+                                    <div class="comment-avatar" >
+                                        <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-512.png" alt="profilePicture">
+                                    </div>
+
+                                    <!-- Contenedor del Comentario -->
+                                    <div class="comment-box">
+                                        <div id="notificationsSound"></div>
+                                        <div class="comment-head">
+                                            <h6 class="comment-name "> <!-- by-author   //can be addes if a want to show the author -->
+                                                <span>{{ comment.user.username }} &nbsp;</span> {{ comment.creationDate }}
+
+                                            </h6>
+                                        </div>
+                                        <div class="comment-content">
+                                            {{ comment.comment }}
+                                        </div>
+                                        <div id="userRate" data-value="{{ comment.rate }}" ></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    {% endfor %}
     <div class="row">
         <div class="col-md-12">
             <div class="widget-area no-padding blank">
@@ -41,7 +79,6 @@
             $('document').ready(function () {
                 var meanRate ='{{ meanRate }}';
                 meanRate = Math.round(meanRate);
-
                 // Rating!
                 $('#mean').score({
                     fontAwesome : true,
@@ -49,6 +86,17 @@
                     color: '#446CB3',
                     score: meanRate
 
+                });
+
+                $('div[id="userRate"]').each(function(index, elem) {
+                    var valor = $(elem).data('value');
+                    console.log(valor);
+                    $(elem).score({
+                        fontAwesome : true,
+                        readOnly    : true,
+                        color : '#F7CA18',
+                        score: valor
+                    });
                 });
             });
             // Use for the Map!
