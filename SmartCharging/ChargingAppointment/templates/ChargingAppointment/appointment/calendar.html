@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% load static from staticfiles %}
+
+
+{% block content %}
+    <h1>{{appointment.chargingStation}}</h1>
+    <div id='calendar'></div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'scripts/moment.min.js' %}"></script>
+    <script src="{% static 'scripts/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'scripts/fullcalendar.js' %}"></script>
+
+    <script>
+
+
+    $(document).ready(function() {
+
+        // page is now ready, initialize the calendar...
+
+        $('#calendar').fullCalendar({
+            // put your options and callbacks here
+        });
+    });
+
+    </script>
+{% endblock %}

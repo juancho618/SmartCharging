@@ -42,6 +42,13 @@ class AppointmentCreate(forms.ModelForm):
             'chargingStation': "Charging station",
         }
 
+class AppointmentCalendar(forms.ModelForm):
+    class Meta:
+        model = models.Appointment
+        fields=[
+            'chargingStation'
+        ]
+
 class RateSation(forms.ModelForm):
     class Meta:
         model = models.ChargingStationRate

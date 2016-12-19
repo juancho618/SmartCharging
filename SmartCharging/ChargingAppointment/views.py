@@ -13,7 +13,7 @@ from . import forms
 
 
 from .models import ChargingSpot
-from .forms import PlugTypeCreate, AppointmentCreate, RateSation
+from .forms import PlugTypeCreate, AppointmentCreate, RateSation,AppointmentCalendar
 # Create your views here.
 
 def chargingSpotList(request):
@@ -132,3 +132,8 @@ class CreateAppointmentView(LoginRequiredMixin, CreateView):
 
     #def get_queryset(self):
      #   return models.Appointment.objects.filter(userReservation  = self.request.user.pk)
+
+class AppointmentCalendar(LoginRequiredMixin,DetailView):
+    form_class = AppointmentCalendar
+    template_name = "ChargingAppointment/appointment/calendar.html"
+    model = models.Appointment
