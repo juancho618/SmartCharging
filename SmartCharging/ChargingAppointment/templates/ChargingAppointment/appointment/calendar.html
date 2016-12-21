@@ -4,7 +4,7 @@
 
 
 {% block content %}
-    <h1>{{appointment.chargingStation}}</h1>
+    <h1>{{ chargingspot.name }}</h1>
     <div id='calendar'></div>
 
 {% endblock %}
@@ -16,15 +16,101 @@
 
     <script>
 
-
     $(document).ready(function() {
+          $.ajax({
+                      type: "POST",
+                      url: "{% url 'lista' %}",
+                      data: {id: "{{ chargingspot.pk }}", csrfmiddlewaretoken: '{{ csrf_token }}'},
+                      success: function(response) {
 
-        // page is now ready, initialize the calendar...
+                                    var evento = {events: []};
+                                    var obj = jQuery.parseJSON(response);
+                                    var colors= ['#00BCD4', '#009688', '#03A9F4', '#673AB7', '#3F51B5', '#2196F3', '#CDDC39', '#CDDC39', '#9C27B0', '#F44336']
+                                    for(i=0; i<obj.length; i++){
+                                        var fecha = obj[i].fields.reservationDate;
+                                        //var fecha = obj[i].fields.reservationDate.substring(0, obj[i].fields.reservationDate.length - 1);
+                                        var e= {title: 'Reservation '+ (i + 1).toString(),
+                                            start: fecha,
+                                            color: colors[Math.floor(Math.random() * colors.length) + 1]};
+                                        evento.events.push(e);
+                                    }
+                                    console.log(response);
+                                    $('#calendar').fullCalendar('addEventSource', evento);
+                      },
+                 });
 
-        $('#calendar').fullCalendar({
-            // put your options and callbacks here
-        });
+    var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    var lastView;
+    var daySource = new Object();
+    daySource.title = 'Tuesday'; // this should be string
+    daySource.start = new Date(y, m, d); // this should be date object
+    daySource.end = new Date(y, m, d);
+
+    var day = new Array();
+    day[0] = daySource;
+
+    var monthSource = new Object();
+    monthSource.title = 'December'; // this should be string
+    monthSource.start = new Date(y, m, d); // this should be date object
+    monthSource.end = new Date(y, m, d);
+
+    var month = new Array();
+    month[0] = monthSource;
+
+    $('#calendar').fullCalendar({
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,agendaWeek,agendaDay'
+        },
+       /** columnFormat: {
+            month: 'ddd',
+            week: 'ddd d/M',
+            day: 'dddd d/M'
+        },**/
+        displayEventTime: false,
+        defaultView: 'agendaDay',
+        viewDisplay: function (view) {
+            if (lastView == 'undefined') {
+                lastView = 'firstRun';
+            }
+            if (view.name !== lastView) {
+                if (view.name == 'agendaWeek') {
+                    $('#calendar').fullCalendar('addEventSource', month);
+                    $('#calendar').fullCalendar('removeEventSource', day);
+                    $('#calendar').fullCalendar('removeEventSource', day);
+                    $('#calendar').fullCalendar('renderEvents');
+                }
+                if (view.name == 'agendaDay') {
+                    $('#calendar').fullCalendar('addEventSource', day);
+                    $('#calendar').fullCalendar('removeEventSource', month);
+                    $('#calendar').fullCalendar('removeEventSource', month);
+                    $('#calendar').fullCalendar('renderEvents');
+                }
+                if (view.name == 'month') {
+                    $('#calendar').fullCalendar('addEventSource', month);
+                    $('#calendar').fullCalendar('removeEventSource', day);
+                    $('#calendar').fullCalendar('removeEventSource', day);
+                    $('#calendar').fullCalendar('renderEvents');
+                }
+                lastView = view.name;
+            }
+        },
+        timeFormat: { // for event elements
+            agendaDay: '',
+            agendaWeek: '',
+            month: '',
+                '': 'h(:mm)t' // default
+        }
     });
+
+    //$('#calendar').fullCalendar('addEventSource', month);
+    $('#calendar').fullCalendar('rerenderEvents');
+    });
+
 
     </script>
 {% endblock %}

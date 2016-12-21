@@ -6,6 +6,7 @@ from django.views.generic import (DeleteView, ListView, CreateView,
                                   DetailView, UpdateView)
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Avg
+from django.core import serializers
 
 
 from . import models
@@ -15,6 +16,18 @@ from . import forms
 from .models import ChargingSpot
 from .forms import PlugTypeCreate, AppointmentCreate, RateSation,AppointmentCalendar
 # Create your views here.
+def appointmentsList(request):
+    q = models.Appointment.objects.filter(chargingStation_id=request.POST.get('id')).prefetch_related('userReservation')
+    #print( models.Appointment)
+    response = serializers.serialize('json', q)
+    #response = q
+    #return JsonResponse(response)
+    #response_data = {'data': q }
+    #response_data['title'] = 'Event title'
+    #response_data['start'] = 'a'
+    #return json.dumps(list(response_data), cls=DjangoJSONEncoder)
+    #return JsonResponse(response_data)
+    return HttpResponse(response)
 
 def chargingSpotList(request):
     chargingSpots = ChargingSpot.objects.all()
@@ -35,7 +48,7 @@ def createChargingSpot(request):
             chargingStation.area = request.POST.get('area')
             chargingStation.neighborhood  = request.POST.get('neighborhood')
             chargingStation.save()
-            #return HttpResponseRedirect(chargingStation.get_absolute_url())
+            return HttpResponseRedirect(chargingStation.get_absolute_url())
     return render(request, 'ChargingAppointment/chargingSpot/create.html', {'form': form})
 
 class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
@@ -44,9 +57,10 @@ class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
     template_name = "ChargingAppointment/chargingSpot/details.html"
 
 
-    def form_valid(self, form):
+    def form_valid(self, form, ):
         form.instance.user = self.request.user
-        form.instance.chargingStation = models.ChargingSpot.objects.get(pk=1)
+        stationId = self.kwargs['pk']
+        form.instance.chargingStation = models.ChargingSpot.objects.get(id = stationId)
         form.instance.rate = self.request.POST.get('rate')
         form.instance.comment = self.request.POST.get('commentTxt')
         return super(ChargingStationDetail, self).form_valid(form)
@@ -58,7 +72,9 @@ class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
         context['listComments'] = listRate
         return context
 
-
+#locoooooo
+# estoy loco
+# estoy un donkey
 #@login_required
 def createPlugType(request):
     form = forms.PlugTypeCreate()
@@ -134,6 +150,6 @@ class CreateAppointmentView(LoginRequiredMixin, CreateView):
      #   return models.Appointment.objects.filter(userReservation  = self.request.user.pk)
 
 class AppointmentCalendar(LoginRequiredMixin,DetailView):
-    form_class = AppointmentCalendar
+    form_class = ChargingSpot
     template_name = "ChargingAppointment/appointment/calendar.html"
-    model = models.Appointment
+    model = models.ChargingSpot

@@ -30,9 +30,13 @@ class ChargingSpot(models.Model):
     city = models.CharField(max_length=255, default=0)
     area = models.CharField(max_length=255, default=0)
     neighborhood = models.CharField(max_length=255, default=0)
+    description = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):             #Return after the save or edit action!
+        return reverse("chargingSpotsList")
 
 class Appointment (models.Model):
     creationDate = models.DateTimeField(auto_now_add=True)
@@ -49,4 +53,7 @@ class ChargingStationRate(models.Model):
     rate = models.PositiveIntegerField(validators=[MinValueValidator(0),MaxValueValidator(5)])
     comment = models.CharField(max_length=255)
     creationDate = models.DateTimeField(auto_now_add=True)
+
+    def get_absolute_url(self):  # Return after the save or edit action!
+        return reverse("detailsChargingStation", kwargs={'pk':self.chargingStation.pk})
 

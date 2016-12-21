@@ -7,15 +7,28 @@
 
 {% block content %}
     <h1>{{chargingspot.name}}</h1>
+    <hr>
     <div class="animated fadeIn" id="map" style="height:250px"></div>
     <div class="demo-default" id="mean"></div>
-    {% for comment in  listComments  %}
-        <div class="row">
+    <hr>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="control-label"> Description</label>
+                <textarea class="form-control" readonly>
+                    {{ chargingspot.description }}
+                </textarea>
+            </div>
+        </div>
+    </div>
+ <div class="row">
             <div class="col-md-12">
                 <div class=""><br />
                     <div class="comments-container">
                         <ul id="comments-list" class="comments-list">
-                            <li ng-repeat="item in postList">
+    {% for comment in  listComments  %}
+
+                            <li>
                                 <div class="comment-main-level">
                                     <!-- Avatar -->
                                     <div class="comment-avatar" >
@@ -38,13 +51,14 @@
                                     </div>
                                 </div>
                             </li>
-                        </ul>
+    {% endfor %}
+     </ul>
                     </div>
                     <br />
                 </div>
             </div>
         </div>
-    {% endfor %}
+    {% if user.is_authenticated %}
     <div class="row">
         <div class="col-md-12">
             <div class="widget-area no-padding blank">
@@ -64,6 +78,7 @@
             </div><!-- Widget Area -->
         </div>
     </div>
+    {%  endif %}
 
 
 

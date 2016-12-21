@@ -8,14 +8,17 @@ class ChargingStationCreate(forms.ModelForm):
         model = models.ChargingSpot
         fields = [
             'name',
-            'plugType'
+            'plugType',
+            'description'
         ]
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'plugType': forms.Select(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
         }
         labels = {
-            'name': "Charging station name"
+            'name': "Charging station name",
+            'Plug Type': "Plug Type"
         }
 
 class PlugTypeCreate(forms.ModelForm):

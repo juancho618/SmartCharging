@@ -1,32 +1,44 @@
 {% extends "layout.html" %}
-
+{% load bootstrap3 %}
 {% block content %}
-    <div class="container">
-        <form action="" method="post">
-        <div class="row">
-           {{form.as_p}}
-            {% csrf_token %}
-        </div>
+    <div class="header">
+        <h2 class="title">Create a New Charging Station</h2>
+    </div>
 
-        <div class="form-group">
-            <input type="text" name="Address" id="Address" autocomplete="off" class="form-control" style = "width:516px"  />
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                    <div id="map" style="height: 415px"></div> <br />
+        <hr />
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                {% bootstrap_form form %}
+                {% csrf_token %}
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                        <label class="control-label">Address</label><br/>
+                        <input type="text" name="Address" id="Address" autocomplete="off" class="form-control" style = "width:516px"  />
+                  </div>
+                        <div id="map" style="height: 415px"></div>
+                        <br />
                         <input type="hidden" name="latitude" value="">
                         <input type="hidden" name="longitude" value="">
                         <input type="hidden" name="country" value="">
                         <input type="hidden" name="city" value="">
                         <input type="hidden" name="area" value="">
                         <input type="hidden" name="neighborhood" value="">
-
+                </div>
             </div>
-        </div>
 
-        <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
+
+            <hr/>
+            <div class="panel panel-default">
+                <div class="panel-body text-center">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fa fa-check"></i> Save
+                    </button>
+                </div>
+            </div>
+
         </form>
-    </div>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.10.4/dist/typeahead.bundle.min.js"></script>
