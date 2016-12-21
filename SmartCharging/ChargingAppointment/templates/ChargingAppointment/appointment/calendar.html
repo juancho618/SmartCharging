@@ -19,10 +19,15 @@
     <script>
 
     $(document).ready(function() {
+         var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+        var dia = d.toString();
           $.ajax({
                       type: "POST",
                       url: "{% url 'lista' %}",
-                      data: {id: "{{ chargingspot.pk }}", csrfmiddlewaretoken: '{{ csrf_token }}'},
+                      data: {id: "{{ chargingspot.pk }}", csrfmiddlewaretoken: '{{ csrf_token }}', d: dia},
                       success: function(response) {
 
                                     var evento = {events: []};
@@ -40,10 +45,7 @@
                       },
                  });
 
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
+
     var lastView;
     var daySource = new Object();
     daySource.title = 'Tuesday'; // this should be string

@@ -7,6 +7,7 @@ from django.views.generic import (DeleteView, ListView, CreateView,
 from django.core.urlresolvers import reverse_lazy
 from django.db.models import Avg
 from django.core import serializers
+from datetime import datetime,date
 
 
 from . import models
@@ -17,7 +18,7 @@ from .models import ChargingSpot
 from .forms import PlugTypeCreate, AppointmentCreate, RateSation,AppointmentCalendar
 # Create your views here.
 def appointmentsList(request):
-    q = models.Appointment.objects.filter(chargingStation_id=request.POST.get('id')).prefetch_related('userReservation')
+    q = models.Appointment.objects.filter(chargingStation_id=request.POST.get('id'), reservationDate__icontains=request.POST.get('d')).prefetch_related('userReservation')
     #print( models.Appointment)
     response = serializers.serialize('json', q)
     #response = q
