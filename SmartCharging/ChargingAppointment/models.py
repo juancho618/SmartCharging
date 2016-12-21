@@ -48,7 +48,7 @@ class Appointment (models.Model):
         return reverse('calendarAppointment', kwargs={'pk': self.chargingStation.pk})
 
     def __str__(self):
-        return self.userReservation + self.userReservation
+        return str(self.userReservation + self.reservationDate)
 
 class ChargingStationRate(models.Model):
     chargingStation = models.ForeignKey(ChargingSpot)
