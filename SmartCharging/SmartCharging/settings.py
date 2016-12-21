@@ -131,7 +131,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
-LOGIN_REDIRECT_URL = "listPlugType"
+LOGIN_REDIRECT_URL = "chargingSpotsList"
 
 #simulate email for reset password
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"

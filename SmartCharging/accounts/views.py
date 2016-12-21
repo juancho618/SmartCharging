@@ -5,10 +5,11 @@ from django.shortcuts import render
 from django.views import generic            #Allow to use form view
 
 from . import forms
+from django.contrib.auth import get_user_model
 
 class LoginView(generic.FormView):
     form_class = AuthenticationForm
-    success_url = reverse_lazy("listPlugType")
+    success_url = reverse_lazy('chargingSpotsList')
     template_name = "accounts/login.html"
 
     def get_form(self, form_class=None):
@@ -35,3 +36,7 @@ class SingUp(generic.CreateView):
     def  form_valid(self, form):
         form.instance.display_name =  form.instance.username
         return super(SingUp, self).form_valid(form)
+
+class Profile(generic.DetailView):
+    model = get_user_model()
+    template_name = "accounts/profile.html"

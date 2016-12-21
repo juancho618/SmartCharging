@@ -72,9 +72,6 @@ class ChargingStationDetail(LoginRequiredMixin, DetailView, CreateView ):
         context['listComments'] = listRate
         return context
 
-#locoooooo
-# estoy loco
-# estoy un donkey
 #@login_required
 def createPlugType(request):
     form = forms.PlugTypeCreate()

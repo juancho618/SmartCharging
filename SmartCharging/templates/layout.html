@@ -60,7 +60,7 @@
 
                         <ul class="nav navbar-nav navbar-right">
                             {% if user.is_authenticated %}
-                                <li><a href="#" class="btn btn-simple">Hello! {{ user.get_short_name }}</a></li>
+                                <li><a href="/accounts/profile/{{user.pk}}" class="btn btn-simple">Hello! {{ user.get_short_name }}</a></li>
 						        <li><a href="{% url 'logout' %}" class="btn btn-simple">Log out</a></li>
                             {% else %}
                                 <li><a href="{% url 'login' %}" class="btn btn-simple">Log in</a></li>
