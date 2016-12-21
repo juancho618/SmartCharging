@@ -45,7 +45,7 @@ class Appointment (models.Model):
     userReservation = models.ForeignKey(settings.AUTH_USER_MODEL)
 
     def get_absolute_url(self):
-        return reverse('listPlugType')
+        return reverse('calendarAppointment', kwargs={'pk': self.chargingStation.pk})
 
 class ChargingStationRate(models.Model):
     chargingStation = models.ForeignKey(ChargingSpot)

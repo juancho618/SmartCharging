@@ -7,6 +7,9 @@
 
 {% block content %}
     <h1>{{chargingspot.name}}</h1>
+    <a href="{% url 'createAppointment' %}" type="button" class="btn btn-info"><i class="fa fa-calendar-plus-o"></i> Set an appointment</a>
+    <a href="{% url 'calendarAppointment' pk=chargingspot.pk %}" type="button" class="btn btn-primary"><i class="fa fa-calendar"></i> Check calendar</a>
+
     <hr>
     <div class="animated fadeIn" id="map" style="height:250px"></div>
     <div class="demo-default" id="mean"></div>

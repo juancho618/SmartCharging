@@ -134,6 +134,11 @@ class CreateAppointmentView(LoginRequiredMixin, CreateView):
         form.instance.userReservation = self.request.user
         return super(CreateAppointmentView, self).form_valid(form)
 
+    def get_initial(self):
+        initial = super().get_initial()
+        if self.pk_url_kwarg == 1:
+            initial['chargingStation'] = 1
+        return initial
     #def get_context_data(self, **kwargs):
      #   context = super(CreateAppointmentView, self).get_context_data(**kwargs)
       #  user = self.request.user

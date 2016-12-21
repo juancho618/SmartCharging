@@ -3,7 +3,6 @@
 {% block content %}
     <h1>{% if not form.instance.pk %} Create Appointment{% else %}Edit {{ form.instance.name}}{% endif %}</h1>
     <form action="" method="post">
-        <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
@@ -12,8 +11,13 @@
                 </div>
                {% csrf_token %}
             </div>
-            <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
-        </div>
+        <div class="panel panel-default">
+                <div class="panel-body text-center">
+                     <button type="submit" class="btn btn-success"><i class="pe-7s-plus"></i> Add</button>
+                </div>
+            </div>
+
+
     </form>
 
 {% endblock %}
