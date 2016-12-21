@@ -17,7 +17,7 @@ from .models import ChargingSpot
 from .forms import PlugTypeCreate, AppointmentCreate, RateSation,AppointmentCalendar
 # Create your views here.
 def appointmentsList(request):
-    q = models.Appointment.objects.filter(chargingStation_id=request.POST.get('id'), rese).prefetch_related('userReservation')
+    q = models.Appointment.objects.filter(chargingStation_id=request.POST.get('id')).prefetch_related('userReservation')
     #print( models.Appointment)
     response = serializers.serialize('json', q)
     #response = q
