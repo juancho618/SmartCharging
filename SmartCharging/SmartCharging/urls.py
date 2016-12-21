@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^chargingappointment/', include('ChargingAppointment.urls')),
     url(r'^accounts/', include('accounts.url', namespace='accounts')),
     url(r'^accounts/', include("django.contrib.auth.urls")),
-    url(r'^$', views.layout),
+    url(r'^$', views.home),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
