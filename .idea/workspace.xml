@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f56040da-f9b4-4ff4-9573-422a1b3ec86e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartCharging/ChargingAppointment/templates/ChargingAppointment/appointment/calendar.html" afterPath="$PROJECT_DIR$/SmartCharging/ChargingAppointment/templates/ChargingAppointment/appointment/calendar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py" afterPath="$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py" afterPath="$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py" />
     </list>
     <ignored path="PythonProject.iws" />
@@ -27,17 +28,17 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="137" column="39" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
+            <state relative-caret-position="51">
+              <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="calendar.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="calendar.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/templates/ChargingAppointment/appointment/calendar.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -70,8 +71,8 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="42" column="19" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="19" />
+            <state relative-caret-position="425">
+              <caret line="43" column="19" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="19" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -102,8 +103,8 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+            <state relative-caret-position="85">
+              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -182,11 +183,11 @@
         <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/templates/ChargingAppointment/appointment/create.html" />
         <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/models.py" />
         <option value="$PROJECT_DIR$/SmartCharging/accounts/templates/accounts/login.html" />
-        <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py" />
         <option value="$PROJECT_DIR$/SmartCharging/templates/registration/login.html" />
         <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/urls.py" />
-        <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py" />
         <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/templates/ChargingAppointment/appointment/calendar.html" />
+        <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py" />
+        <option value="$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py" />
       </list>
     </option>
   </component>
@@ -1164,16 +1165,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SmartCharging/templates/registration/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1198,28 +1189,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="42" column="19" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="15" column="100" selection-start-line="15" selection-start-column="100" selection-end-line="15" selection-end-column="100" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="137" column="39" selection-start-line="137" selection-start-column="39" selection-end-line="137" selection-end-column="39" />
           <folding />
         </state>
       </provider>
@@ -1244,6 +1217,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="43" column="19" selection-start-line="43" selection-start-column="4" selection-end-line="43" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartCharging/ChargingAppointment/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
           <folding />
         </state>
       </provider>
